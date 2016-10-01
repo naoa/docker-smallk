@@ -1,0 +1,8 @@
+data:
+  image: busybox:latest
+  volumes:
+    - /var/lib/smallk:/var/lib/smallk
+smallk:
+  build: .
+  volumes_from:
+    - data
