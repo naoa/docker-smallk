@@ -1,7 +1,6 @@
 FROM gcc:4.9
 
-RUN apt-get update
-RUN apt-get install -y cmake
+RUN apt-get update && apt-get install -y cmake
 
 # OpenMPI
 RUN cd /usr/src && \
@@ -49,13 +48,13 @@ RUN cd /usr/src/Elemental-0.84-p1/build_hybrid && \
     -D ELEM_EXAMPLES=ON -D ELEM_TESTS=ON  ..
 RUN cd /usr/src/Elemental-0.84-p1/build_hybrid && make -j4 && make install
 
-RUN mkdir /usr/src/Elemental-0.84-p1/build_pure
-RUN cd /usr/src/Elemental-0.84-p1/build_pure && \
-    cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease \
-    -D CMAKE_BUILD_TYPE=PureRelease \
-    -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.19/lib -lopenblas -lm" \
-    -D ELEM_EXAMPLES=ON -D ELEM_TESTS=ON  ..
-RUN cd /usr/src/Elemental-0.84-p1/build_pure && make -j4 && make install
+#RUN mkdir /usr/src/Elemental-0.84-p1/build_pure
+#RUN cd /usr/src/Elemental-0.84-p1/build_pure && \
+#    cmake -D CMAKE_INSTALL_PREFIX=/usr/local/elemental/0.84-p1/PureRelease \
+#    -D CMAKE_BUILD_TYPE=PureRelease \
+#    -D MATH_LIBS="/usr/local/flame/lib/libflame.a;-L/usr/local/openblas/0.2.19/lib -lopenblas -lm" \
+#    -D ELEM_EXAMPLES=ON -D ELEM_TESTS=ON  ..
+#RUN cd /usr/src/Elemental-0.84-p1/build_pure && make -j4 && make install
 
 #SmallK
 RUN cd /usr/src && \
