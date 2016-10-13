@@ -12,7 +12,7 @@ https://github.com/smallk/smallk
 # Usage
 
 ```
-docker pull naoa/smallk
+docker build -t naoa/smallk .
 docker run --rm -v /var/lib/smallk:/var/lib/smallk naoa/smallk nmf --matrixfile /var/lib/smallk/news20.mtx --k 2 --outfile_W /var/lib/smallk/w.csv --outfile_H /var/lib/smallk/h.csv
 ```
 
